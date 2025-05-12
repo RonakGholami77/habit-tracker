@@ -1,0 +1,18 @@
+.day {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+
+    .status-indicator {}
+
+    .day-of-the-week {}
+
+    .date {}
+
+    .today-indicator {
+        font-size: var(--fz-700);
+    }
+
+
+
+}
