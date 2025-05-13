@@ -2,8 +2,11 @@
     display: grid;
     justify-items: center;
     align-content: start;
+    cursor: pointer;
 
-    .status-indicator {}
+    .status-indicator {
+
+    }
 
     .day-of-the-week {}
 
@@ -11,8 +14,13 @@
 
     .today-indicator {
         font-size: var(--fz-700);
+        color: var(--color-primary);
+
     }
 
+    &.highlight  {
+        color: var(--color-primary);
 
+    }
 
 }

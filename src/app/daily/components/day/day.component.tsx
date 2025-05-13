@@ -4,14 +4,28 @@ import styles from "./day.module.css";
 import MingcuteCheck2Fill from "@/icons/MingcuteCheck2Fill";
 import MingcuteUpSmallFill from "@/icons/MingcuteUpSmallFill";
 
+import clsx from "clsx";
+
 type Props = {
   date: Date;
-  today?: boolean;
+  selected: Date | null;
+  onClick?: (date: Date) => void;
 };
 
-export default function DayComponent({ date, today }: Props): ReactElement {
+export default function DayComponent({
+  date,
+  selected,
+  onClick,
+}: Props): ReactElement {
+  const isSelected = selected?.toDateString() === date.toDateString();
+  const today = new Date();
+  const isToday = today.toDateString() === date.toDateString();
+
   return (
-    <div className={styles.day}>
+    <div
+      className={clsx(styles.day, isToday && styles.highlight)}
+      onClick={() => onClick?.(date)}
+    >
       <div className={styles["status-indicator"]}>
         <MingcuteCheck2Fill />
       </div>
@@ -21,7 +35,7 @@ export default function DayComponent({ date, today }: Props): ReactElement {
       <div className={styles.date}>
         {date.toLocaleDateString("fa-IR", { day: "numeric" })}
       </div>
-      {today && (
+      {isSelected && (
         <div className={styles["today-indicator"]}>
           <MingcuteUpSmallFill />
         </div>
